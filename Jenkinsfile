@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
+        sh 'make --version'
         sh 'chmod +x build.sh'
         sh './build.sh'
         archiveArtifacts(artifacts: 'scripts/teste.out', fingerprint: true)

@@ -37,7 +37,7 @@ pipeline {
     }
   
 
-  stage('Deploy to Dev') {
+    stage('Deploy to Dev') {
             when {
                 branch 'main'
             }
@@ -46,7 +46,7 @@ pipeline {
                 // Add your deployment steps here for the dev environment
             }
         }
-        stage('Deploy to QA') {
+    stage('Deploy to QA') {
             when {
                 expression { return params.BRANCH_NAME.startsWith('release/') }
             }

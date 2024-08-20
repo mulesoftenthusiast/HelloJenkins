@@ -56,4 +56,25 @@ pipeline {
             }
         }
     }
+    stage('Create Tag') {
+            when {
+                expression { return params.BRANCH_NAME.startsWith('release/') && params.TAG_NAME != '' }
+            }
+            steps {
+                script {
+                    echo "Creating tag ${params.TAG_NAME} on branch ${params.BRANCH_NAME}"
+                    sh "git tag -a ${params.TAG_NAME} -m 'Tagging for UAT deployment'"
+                    sh "git push origin ${params.TAG_NAME}"
+                }
+            }
+        }
+    stage('Deploy to UAT') {
+            when {
+                expression { return params.BRANCH_NAME.startsWith('release/') && params.TAG_NAME != '' }
+            }
+            steps {
+                echo "Deploying tag ${params.TAG_NAME} to UAT environment..."
+                // Add your deployment steps here for the UAT environment
+            }
+        }
 }

@@ -5,6 +5,8 @@ pipeline {
     }
   parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch name to build (default is main)')
+        string(name: 'TAG_NAME', defaultValue: '', description: 'Tag name to create (only used in release branches)')
+
     }
   stages {
 

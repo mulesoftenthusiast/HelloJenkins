@@ -57,7 +57,7 @@ pipeline {
                 // Add your deployment steps here for the QA environment
             }
         }
-    }
+    
     stage('Create Tag') {
             when {
                 expression { return params.BRANCH_NAME.startsWith('release/') && params.TAG_NAME != '' }
@@ -79,4 +79,5 @@ pipeline {
                 // Add your deployment steps here for the UAT environment
             }
         }
+  }
 }

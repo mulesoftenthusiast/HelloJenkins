@@ -14,7 +14,7 @@ pipeline {
                     // Checkout the specified branch or default to 'main'
                     def branch = params.BRANCH_NAME ?: 'main'
                     echo "Building branch: ${branch}"
-                    git branch: branch, url: 'https://github.com/your-repo-url.git'
+                    git branch: branch, url: 'https://github.com/mulesoftenthusiast/HelloJenkins.git'
                 }
             }
         }

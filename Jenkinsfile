@@ -36,4 +36,24 @@ pipeline {
       }
     }
   }
+
+  stage('Deploy to Dev') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying to Development environment...'
+                // Add your deployment steps here for the dev environment
+            }
+        }
+        stage('Deploy to QA') {
+            when {
+                expression { return params.BRANCH_NAME.startsWith('release/') }
+            }
+            steps {
+                echo 'Deploying to QA environment...'
+                // Add your deployment steps here for the QA environment
+            }
+        }
+    }
 }

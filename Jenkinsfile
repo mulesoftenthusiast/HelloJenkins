@@ -35,7 +35,7 @@ pipeline {
         sh './run.sh'
       }
     }
-  }
+  
 
   stage('Deploy to Dev') {
             when {
@@ -56,3 +56,4 @@ pipeline {
             }
         }
     }
+}
